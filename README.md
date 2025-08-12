@@ -1,1 +1,7 @@
-# fluxo
+# fluxo projeto
+
+/fluxo/
+├── api
+└── front
+
+    

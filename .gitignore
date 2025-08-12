@@ -1,0 +1,124 @@
+# === Python & Django (Backend) ===
+# Bytecode compilado pelo Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de banco de dados de desenvolvimento
+# O banco de dados de produção é gerenciado externamente.
+db.sqlite3
+db.sqlite3-journal
+
+# Ambientes virtuais
+# As dependências são gerenciadas pelo pyproject.toml ou requirements.txt
+.venv/
+venv/
+env/
+ENV/
+.env/
+.python-version
+
+# Arquivos de log e relatórios
+*.log
+*.pot
+*.mo
+htmlcov/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# Arquivos de distribuição e pacotes
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Arquivos de mídia enviados pelo usuário (User-uploaded media)
+# Devem ser armazenados em um serviço de armazenamento de arquivos como S3 em produção.
+/media/
+
+# Diretório de arquivos estáticos coletados (Collected static files)
+# Este diretório é um artefato de build, gerado pelo comando `collectstatic` durante a implantação.
+# O código-fonte dos arquivos estáticos reside dentro dos diretórios `static/` de cada app Django.
+/static_root/
+/staticfiles/
+
+# === Node.js & Next.js (Frontend) ===
+# Dependências do Node.js
+# Gerenciadas pelo package.json e package-lock.json
+/node_modules/
+
+# Artefatos de build e cache do Next.js
+/.next/
+/out/
+/build/
+
+# Logs de depuração de gerenciadores de pacotes
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos de cache e build do TypeScript
+*.tsbuildinfo
+
+# === Segredos e Arquivos de Ambiente ===
+# Arquivos de ambiente locais que contêm segredos (API keys, senhas de banco de dados)
+# NUNCA devem ser versionados.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Exceção: Incluir um arquivo de exemplo para guiar outros desenvolvedores.
+# Este arquivo NÃO deve conter valores de segredos.
+!.env.example
+!.env.sample
+
+# === Configurações de SO e IDE ===
+# Arquivos específicos do sistema operacional
+.DS_Store
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+
+# Configurações de IDE
+# Visual Studio Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# JetBrains (PyCharm, WebStorm, etc.)
+# Baseado nas recomendações oficiais da JetBrains para compartilhamento de projetos
+.idea/*
+!.idea/misc.xml
+!.idea/modules.xml
+!.idea/runConfigurations/
+!.idea/vcs.xml
+!.idea/webServers.xml
+!shelf/
+
+# Caches de ferramentas de linting e formatação
+.ruff_cache/
+.mypy_cache/
