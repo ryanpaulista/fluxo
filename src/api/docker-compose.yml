@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14-alpine # imagem oficial e leve do PostgreSQL
+    container_name: my_project_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports: 
+      - "5432:5432"
+    healthcheck: # Verifica se o banco de dados está pronto para aceitar conexões
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+  web:
+    build: . # Constroi a imagem a partir do Dockerfile na raiz do projeto
+    container_name: my_web_project
+    command: 
+      - "python" 
+      - "manage.py"
+      - "runserver" 
+      - "0.0.0.0:3000"
+    volumes:
+      # Permite que ao alterar o código local, as mudanças seja refletidas no container
+      - .:/app # Mapeia o código local para dentro do container
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_NAME=${POSTGRES_DB}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      db:
+        condition: service_healthy # Garante que o serviço web só inicie após o banco de dados estar pronto
+
+# Garante que os dados do banco de dados persitam mesmo que o container seja destruído
+volumes:
+  postgres_data: # Volume persistente para os dados do PostgreSQL
