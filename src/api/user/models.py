@@ -5,6 +5,10 @@ from django.conf import settings
 # Create your models here.
 
 class User(AbstractUser):
+    #first_name, last_name, email, password, is_active, is_superuser, last_login e data_joined 
+    email = models.EmailField(
+        unique=True, 
+        null=False,)
     birth_date = models.DateField(
         null=True, 
         blank=True)
@@ -12,6 +16,13 @@ class User(AbstractUser):
         max_length=15, 
         null=True, 
         blank=True)
+    password = models.CharField(
+        max_length=128, 
+        null=False, 
+        blank=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username'] # afeta apenas o createsuperuser
 
 class Address(models.Model):
     user = models.ForeignKey(
