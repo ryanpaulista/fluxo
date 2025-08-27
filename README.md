@@ -66,3 +66,19 @@ A filosofia é utilizar os "ganchos" (`hooks`) fornecidos pelo framework para in
 
 Stateful - O servidor armazena em uma tabela - Aplicações monolíticas...
 Stateless - O servidor não armazena nada. O estado está no cliente(que guarda o token) - APIs...
+
+Conceitos de cookies
+
+samesite = 'Strict'
+    O navegador nunca enviará o cookie em requisições de outros sites.
+    Se o usuário clicar em um link para o seu site a partir de um email, ele não estará logado!
+
+samesite = 'Lax'
+    Meio-termo - Padrão da maioria dos navegadores moderno
+    O navegador não enviará o cookie em requisiçoes perigosas de outros sites como POST, mas enviará o cookie em navegaçoes normais e seguras, com quando o usuário clica em um link GET para ir de outro site para o seu.
+    O usuário continua logado ao navegar para o seu site a partir de links externos.
+
+samesite = 'None'
+    O navegador sempre enviará o cookie. Baixa segurança.
+    APIs que precisam ser acessadas por outros domínios
+    Secure = True para que o cookie só seja enviado via https.

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #apps
     'rest_framework',
+    'corsheaders',
 
     #local apps
     'user.apps.UserConfig',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,6 +75,12 @@ REST_FRAMEWORK = {
 #     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
 #     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 # }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3001", # A URL do seu app Next.js em desenvolvimento
+]
+
+CORS_ALLOW_CREDENTIALS = True 
 
 ROOT_URLCONF = 'core.urls'
 

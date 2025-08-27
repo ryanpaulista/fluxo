@@ -8,7 +8,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         #Atributos que serão exibidos no serializer
-        fields = ['name', 'description', 'price', 'stock']
-
+        fields = ['id', 'name', 'description', 'price', 'stock']
+        read_only_fields = ['id']
         #exclude = ['created_at', 'updated_at']  # Exemplo de como excluir campos, se necessário
         #fields = '__all__'  # Se quiser incluir todos os campos do modelo

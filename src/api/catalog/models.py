@@ -15,3 +15,6 @@ class Product(models.Model):
         null=False)
     stock = models.PositiveIntegerField(
         default=0)
+
+    def __str__(self):
+        return self.name
