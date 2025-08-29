@@ -16,16 +16,16 @@ class User(AbstractUser):
         max_length=15, 
         null=True, 
         blank=True)
-    password = models.CharField(
-        max_length=128, 
-        null=False, 
-        blank=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username'] # afeta apenas o createsuperuser
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+    
+    class Meta:
+        verbose_name = 'Usuário'
+        verbose_name_plural = 'Usuários'
 
 class Address(models.Model):
     user = models.ForeignKey(
@@ -35,6 +35,10 @@ class Address(models.Model):
     street = models.CharField(
         max_length=255, 
         null=False)
+    building_number = models.IntegerField(
+        null=False, 
+        blank=False
+    )
     city = models.CharField(
         max_length=100, 
         null=False)
@@ -47,4 +51,12 @@ class Address(models.Model):
     country = models.CharField(
         max_length=100, 
         null=False)
+    
+    def __str__(self):
+        return f'Rua: {self.street}, {self.building_number}'
+
+    class Meta:
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'
+
 

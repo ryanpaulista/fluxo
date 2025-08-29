@@ -3,5 +3,15 @@ from .models import User, Address
 
 # Register your models here.
 
-admin.site.register(User)
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = (
+        'email',
+        'birth_date',
+        'first_name',
+        'last_name',
+        'username',
+        'password',
+    )
+
 admin.site.register(Address)
