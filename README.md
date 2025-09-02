@@ -82,3 +82,8 @@ samesite = 'None'
     O navegador sempre enviará o cookie. Baixa segurança.
     APIs que precisam ser acessadas por outros domínios
     Secure = True para que o cookie só seja enviado via https.
+    
+Permissões baseadas em Papel (Role-based Access Control)
+	O que este usuário é? 
+Permissões baseadas em Objeto e Contexto
+	O que este usuário pode fazer com este objeto espevífico? 
