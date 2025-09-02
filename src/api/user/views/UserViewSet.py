@@ -8,7 +8,7 @@ class UserViewSet(viewsets.ModelViewSet):
         - Apenas admins podem listar todos os usuários.
         - Usuários autenticados podem ver/editar seus dados.
     """
-    serializer_class = UserSerializer  # Certifique-se de criar um serializer apropriado para o modelo User
+    serializer_class = UserSerializer  
 
     def get_permission(self):
         """ 
@@ -21,7 +21,8 @@ class UserViewSet(viewsets.ModelViewSet):
             #Para todas as outras ações é exido apenas estar autenticado
             permissions_classes = [IsAuthenticated]
         
-        return [permission() for permission in permissions_classes]
+        # O metodo get_permissino() retorna uma lista de instancias e não uma lista de classes, sendo assim instancio as permissoes e adiciono-as em uma lista
+        return [permission() for permission in permissions_classes] 
 
     def get_queryset(self):
         """
